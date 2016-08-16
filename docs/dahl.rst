@@ -1,0 +1,1395 @@
+Dahl (eQ Author)
+================
+
+Concepts
+--------
+
+The Dahl author experience is intended to run inside the browser to give as
+fluid a  user-experience to authors as possible.  There are two parts to the
+application: A React.JS front end application and the DJango-based backend
+which provides services to the front-end.
+
+
+Structure of a Questionnaire
+----------------------------
+
+A Questionnaire is structured from a number of elements, each a container for
+lower-level elements.  At the top level exists the Questionnaire.
+
+.. toctree::
+   :maxdepth: 2
+
+   dahl/questionnaire
+   dahl/group
+   dahl/block
+
+
+.. code-block:: javascript
+
+    {
+        "mime_type": "application/json/ons/eq",
+        "questionnaire_id": "0",
+        "schema_version": "0.0.1",
+        "survey_id": "0",
+        "title": "Star Wars",
+        "theme": "starwars",
+        "description": "Kitchen sink test for the Star Wars questionnaire",
+        "introduction": {
+            "description": "May the force be with you"
+        },
+        "display": {
+            "properties": {}
+        },
+        "eq_id": "0",
+        "messages": {
+          "INTEGER_TOO_LARGE": "Too big, that number is",
+          "NEGATIVE_INTEGER": "It must be a positive number",
+          "NOT_INTEGER": "Please enter an integer"
+        },
+        "groups": [
+            {
+                "blocks": [
+                    {
+                        "display": {
+                            "properties": {}
+                        },
+                        "id": "f22b1ba4-d15f-48b8-a1f3-db62b6f34cc0",
+                        "sections": [
+                            {
+                                "description": "",
+                                "display": {
+                                    "properties": {}
+                                },
+                                "id": "ed3e200a-0735-4e8d-9eea-627c1d908697",
+                                "questions": [
+                                    {
+                                        "answers": [
+                                            {
+                                                "display": {
+                                                    "properties": {
+                                                        "columns": true
+                                                    }
+                                                },
+                                                "guidance": "",
+                                                "id": "ca3ce3a3-ae44-4e30-8f85-5b6a7a2fb23c",
+                                                "label": "Choose a side",
+                                                "mandatory": true,
+                                                "options": [
+                                                    {
+                                                        "label": "Light Side",
+                                                        "value": "Light Side"
+                                                    },
+                                                    {
+                                                        "label": "Dark Side",
+                                                        "value": "Dark Side"
+                                                    },
+                                                    {
+                                                        "label": "I prefer Star Trek",
+                                                        "value": "I prefer Star Trek"
+                                                    }
+                                                ],
+                                                "q_code": "20",
+                                                "type": "Radio",
+                                                "validation": {
+                                                    "messages": {}
+                                                }
+                                            }
+                                        ],
+                                        "description": "",
+                                        "display": {
+                                            "properties": {}
+                                        },
+                                        "id": "4bfa0229-0ce8-4190-817b-535f55ad2817",
+                                        "title": "",
+                                        "type": "General",
+                                        "validation": []
+                                    }
+                                ],
+                                "title": "Choose your side",
+                                "validation": []
+                            }
+                        ],
+                        "routing_rules":[
+                            {
+                                "goto": {
+                                    "id" : "96682325-47ab-41e4-a56e-8315a19ffe2a",
+                                    "when": {
+                                        "id" : "ca3ce3a3-ae44-4e30-8f85-5b6a7a2fb23c",
+                                        "condition": "equals",
+                                        "value":"Light Side"
+                                    }
+                                }
+
+                            },
+                            {
+                                "goto": {
+                                    "id": "923ccc84-9d47-4a02-8ebc-1e9d14fcf10b",
+                                    "when": {
+                                        "id" : "ca3ce3a3-ae44-4e30-8f85-5b6a7a2fb23c",
+                                        "condition": "equals",
+                                        "value":"Dark Side"
+                                    }
+                                }
+
+                            },
+                            {
+                                "goto": {
+                                    "id": "summary",
+                                    "when": {
+                                        "id" : "ca3ce3a3-ae44-4e30-8f85-5b6a7a2fb23c",
+                                        "condition": "equals",
+                                        "value":"I prefer Star Trek"
+                                    }
+                                }
+
+                            }
+                        ],
+                        "title": "",
+                        "validation": []
+                    },
+                    {
+                        "display": {
+                            "properties": {}
+                        },
+                        "id": "96682325-47ab-41e4-a56e-8315a19ffe2a",
+                        "sections": [
+                            {
+                                "description": "",
+                                "display": {
+                                    "properties": {}
+                                },
+                                "id": "a7dcbb30-1187-4276-a49c-9284730ba4ed",
+                                "questions": [
+                                    {
+                                        "answers": [
+                                            {
+                                                "display": {
+                                                    "properties": {
+                                                        "columns": true
+                                                    }
+                                                },
+                                                "guidance": "",
+                                                "id": "91631df0-4356-4e9f-a9d9-ce8b08d26eb3",
+                                                "label": "",
+                                                "mandatory": true,
+                                                "options": [
+                                                    {
+                                                        "label": "Dan Skywalker",
+                                                        "value": "Dan Skywalker"
+                                                    },
+                                                    {
+                                                        "label": "Hans Solarren",
+                                                        "value": "Hans Solarren"
+                                                    },
+                                                    {
+                                                        "label": "Leyoda",
+                                                        "value": "Leyoda"
+                                                    },
+                                                    {
+                                                        "label": "Davewbacca",
+                                                        "value": "Davewbacca"
+                                                    }
+                                                ],
+                                                "q_code": "21",
+                                                "type": "Radio",
+                                                "validation": {
+                                                    "messages": {}
+                                                }
+                                            }
+                                        ],
+                                        "description": "",
+                                        "display": {
+                                            "properties": {}
+                                        },
+                                        "id": "680f2ff9-d5a5-4057-b1cd-9fde2660b244",
+                                        "title": "A wise choice young Yedi. Pick your hero",
+                                        "type": "General",
+                                        "validation": []
+                                    },
+                                    {
+                                        "answers": [
+                                            {
+                                                "display": {
+                                                    "properties": {
+                                                        "columns": true
+                                                    }
+                                                },
+                                                "guidance": "",
+                                                "id": "2e0989b8-5185-4ba6-b73f-c126e3a06ba7",
+                                                "label": "",
+                                                "mandatory": true,
+                                                "options": [
+                                                    {
+                                                        "label": "Yes",
+                                                        "value": "Yes"
+                                                    },
+                                                    {
+                                                        "label": "No",
+                                                        "value": "No"
+                                                    }
+                                                ],
+                                                "q_code": "23",
+                                                "type": "Radio",
+                                                "validation": {
+                                                    "messages": {}
+                                                }
+                                            }
+                                        ],
+                                        "description": "",
+                                        "display": {
+                                            "properties": {}
+                                        },
+                                        "id": "5667e5eb-f9d3-4482-9257-edf752000708",
+                                        "title": "Do you want to pick a ship?",
+                                        "type": "General",
+                                        "validation": []
+                                    }
+                                ],
+                                "title": "",
+                                "validation": []
+                            }
+                        ],
+                        "title": "",
+                        "routing_rules":[
+                            {
+                                "goto": {
+                                    "id" : "26f2c4b3-28ac-4072-9f18-a6a6c6f660db",
+                                    "when": {
+                                        "id" : "2e0989b8-5185-4ba6-b73f-c126e3a06ba7",
+                                        "condition": "equals",
+                                        "value":"Yes"
+                                    }
+                                }
+
+                            },
+                            {
+                                "goto": {
+                                    "id": "66cd681c-c3cb-4e32-8d51-b98337a6b524",
+                                    "when": {
+                                        "id" : "2e0989b8-5185-4ba6-b73f-c126e3a06ba7",
+                                        "condition": "equals",
+                                        "value":"No"
+                                    }
+                                }
+
+                            }
+                        ],
+                        "validation": []
+                    },
+                    {
+                        "display": {
+                            "properties": {}
+                        },
+                        "id": "923ccc84-9d47-4a02-8ebc-1e9d14fcf10b",
+                        "sections": [
+                            {
+                                "description": "",
+                                "display": {
+                                    "properties": {}
+                                },
+                                "id": "dcb42b6a-88b8-4258-bfe4-3e8b46db28b5",
+                                "questions": [
+                                    {
+                                        "answers": [
+                                            {
+                                                "display": {
+                                                    "properties": {
+                                                        "columns": true
+                                                    }
+                                                },
+                                                "guidance": "",
+                                                "id": "653e6407-43d6-4dfc-8b11-a673a73d602d",
+                                                "label": "",
+                                                "mandatory": true,
+                                                "options": [
+                                                    {
+                                                        "label": "Darth Vadan",
+                                                        "value": "Darth Vadan"
+                                                    },
+                                                    {
+                                                        "label": "Jabba the Hutarren",
+                                                        "value": "Jabba the Hutarren"
+                                                    },
+                                                    {
+                                                        "label": "Boba Fetewis",
+                                                        "value": "Boba Fetewis"
+                                                    },
+                                                    {
+                                                        "label": "Count Davidu",
+                                                        "value": "Count Davidu"
+                                                    }
+                                                ],
+                                                "q_code": "22",
+                                                "type": "Radio",
+                                                "validation": {
+                                                    "messages": {}
+                                                }
+                                            }
+
+                                        ],
+                                        "description": "",
+                                        "display": {
+                                            "properties": {}
+                                        },
+                                        "id": "d9fd4a58-83a5-44df-a413-47ce41244124",
+                                        "title": "Good! Your hate has made you powerful. Pick your baddie",
+                                        "type": "General",
+                                        "validation": []
+                                    },
+                                  {
+                                        "answers": [
+                                            {
+                                                "display": {
+                                                    "properties": {
+                                                        "columns": true
+                                                    }
+                                                },
+                                                "guidance": "",
+                                                "id": "pel989b8-5185-4ba6-b73f-c126e3a06ba7",
+                                                "label": "",
+                                                "mandatory": true,
+                                                "options": [
+                                                    {
+                                                        "label": "Yes",
+                                                        "value": "Yes"
+                                                    },
+                                                    {
+                                                        "label": "No",
+                                                        "value": "No"
+                                                    },
+                                                     {
+                                                        "label": "Can I be a pain and have a goodies ship",
+                                                        "value": "Can I be a pain and have a goodies ship"
+                                                    }
+                                                ],
+                                                "q_code": "23",
+                                                "type": "Radio",
+                                                "validation": {
+                                                    "messages": {}
+                                                }
+                                            }
+                                        ],
+                                        "description": "",
+                                        "display": {
+                                            "properties": {}
+                                        },
+                                        "id": "8777e5eb-f9d3-4482-9257-edf752000708",
+                                        "title": "Do you want to pick a ship?",
+                                        "type": "General",
+                                        "validation": []
+                                    }
+                                ],
+                                "title": "",
+                                "validation": []
+                            }
+                        ],
+                                            "routing_rules":[
+                            {
+                                "goto": {
+                                    "id" : "5ff0d900-530d-4266-8bed-c3d1f11b8d8c",
+                                    "when": {
+                                        "id" : "pel989b8-5185-4ba6-b73f-c126e3a06ba7",
+                                        "condition": "equals",
+                                        "value":"Yes"
+                                    }
+                                }
+
+                            },
+                            {
+                                "goto": {
+                                    "id": "66cd681c-c3cb-4e32-8d51-b98337a6b524",
+                                    "when": {
+                                        "id" : "pel989b8-5185-4ba6-b73f-c126e3a06ba7",
+                                        "condition": "equals",
+                                        "value":"No"
+                                    }
+                                }
+
+                            },
+                            {
+                                "goto": {
+                                    "id": "26f2c4b3-28ac-4072-9f18-a6a6c6f660db",
+                                    "when": {
+                                        "id" : "pel989b8-5185-4ba6-b73f-c126e3a06ba7",
+                                        "condition": "equals",
+                                        "value":"Can I be a pain and have a goodies ship"
+                                    }
+                                }
+
+                            }
+                        ],
+                        "title": "",
+                        "validation": []
+                    },
+                    {
+                        "display": {
+                            "properties": {}
+                        },
+                        "id": "5ff0d900-530d-4266-8bed-c3d1f11b8d8c",
+                        "sections": [
+                            {
+                                "description": "",
+                                "display": {
+                                    "properties": {}
+                                },
+                                "id": "aff50222-8978-495f-9684-e3a1d60c5d70",
+                                "questions": [
+                                    {
+                                        "answers": [
+                                            {
+                                                "display": {
+                                                    "properties": {
+                                                        "columns": true
+                                                    }
+                                                },
+                                                "guidance": "",
+                                                "id": "50dd83c9-8de6-4c3b-be24-e85dd290b855",
+                                                "label": "How many ships do you want?",
+                                                "mandatory": true,
+                                                "options": [
+                                                    {
+                                                        "label": "1",
+                                                        "value": "1"
+                                                    },
+                                                    {
+                                                        "label": "2",
+                                                        "value": "2"
+                                                    }
+                                                ],
+                                                "q_code": "35",
+                                                "type": "Radio",
+                                                "validation": {
+                                                    "messages": {}
+                                                }
+                                            }
+                                        ],
+                                        "description": "",
+                                        "display": {
+                                            "properties": {}
+                                        },
+                                        "id": "1335d8e2-013e-4dba-a493-5fc7e1019d39",
+                                        "title": "How many ships do you want?",
+                                        "type": "General",
+                                        "validation": []
+                                    }
+                                ],
+                                "title": "",
+                                "validation": []
+                            }
+                        ],
+                        "routing_rules":[
+                            {
+                                "goto": {
+                                    "location": "block",
+                                    "id" : "fab02f02-6ce4-4f22-b61f-0c7880009f08_1"
+                                }
+                            }
+                        ],
+                        "title": "",
+                        "validation": []
+                    },
+                    {
+                        "display": {
+                            "properties": {}
+                        },
+                        "id": "26f2c4b3-28ac-4072-9f18-a6a6c6f660db",
+                        "sections": [
+                            {
+                                "description": "",
+                                "display": {
+                                    "properties": {}
+                                },
+                                "id": "b2b1eb6d-400f-452a-854f-be028600f862",
+                                "questions": [
+                                    {
+                                        "answers": [
+                                            {
+                                                "display": {
+                                                    "properties": {
+                                                        "columns": true
+                                                    }
+                                                },
+                                                "guidance": "",
+                                                "id": "a2c2649a-85ff-4a26-ba3c-e1880f7c807b",
+                                                "label": "",
+                                                "mandatory": true,
+                                                "options": [
+                                                    {
+                                                        "label": "Millennium Falcon",
+                                                        "value": "Millennium Falcon"
+                                                    },
+                                                    {
+                                                        "label": "X-wing",
+                                                        "value": "X-wing"
+                                                    }
+                                                ],
+                                                "q_code": "22",
+                                                "type": "Radio",
+                                                "validation": {
+                                                    "messages": {}
+                                                }
+                                            }
+                                        ],
+                                        "description": "",
+                                        "display": {
+                                            "properties": {}
+                                        },
+                                        "id": "574e5d5e-36b4-44ea-b8f6-09d744552241",
+                                        "title": "Which ship do you want?",
+                                        "type": "General",
+                                        "validation": []
+                                    }
+                                ],
+                                "title": "",
+                                "validation": []
+                            }
+                        ],
+                        "routing_rules":[
+                            {
+                                "goto": {
+                                    "location": "block",
+                                    "id" : "66cd681c-c3cb-4e32-8d51-b98337a6b524"
+                                }
+                            }
+                        ],
+                        "title": "",
+                        "validation": []
+                    },
+                    {
+                        "display": {
+                            "properties": {}
+                        },
+                        "id": "fab02f02-6ce4-4f22-b61f-0c7880009f08_1",
+                        "sections": [
+                            {
+                                "description": "",
+                                "display": {
+                                    "properties": {}
+                                },
+                                "id": "cc8ab489-4ad1-4d89-b60f-b13d550fa591_1",
+                                "questions": [
+                                    {
+                                        "answers": [
+                                            {
+                                                "display": {
+                                                    "properties": {
+                                                        "columns": true
+                                                    }
+                                                },
+                                                "guidance": "",
+                                                "id": "a5d5ca1a-cf58-4626-be35-dce81297688b_1",
+                                                "label": "",
+                                                "mandatory": true,
+                                                "options": [
+                                                    {
+                                                        "label": "TIE Fighter",
+                                                        "value": "TIE Fighter"
+                                                    },
+                                                    {
+                                                        "label": "Death Star",
+                                                        "value": "Death Star"
+                                                    }
+                                                ],
+                                                "q_code": "22",
+                                                "type": "Radio",
+                                                "validation": {
+                                                    "messages": {}
+                                                }
+                                            }
+                                        ],
+                                        "description": "",
+                                        "display": {
+                                            "properties": {}
+                                        },
+                                        "id": "cb8f691d-7925-4131-a19b-9eeef592ceea_1",
+                                        "title": "Which ship do you want?",
+                                        "type": "General",
+                                        "validation": []
+                                    }
+                                ],
+                                "title": "",
+                                "validation": []
+                            }
+                        ],
+                        "routing_rules":[
+                            {
+                                "repeat": {
+                                    "answer_id" : "50dd83c9-8de6-4c3b-be24-e85dd290b855",
+                                    "goto": "cd3b74d1-b687-4051-9634-a8f9ce10a27d"
+                                }
+                            }
+                        ],
+                        "title": "",
+                        "validation": []
+                    },
+                    {
+                        "display": {
+                            "properties": {}
+                        },
+                        "id": "66cd681c-c3cb-4e32-8d51-b98337a6b524",
+                        "sections": [
+                            {
+                                "description": "",
+                                "display": {
+                                    "properties": {}
+                                },
+                                "id": "e9ac71cf-2ec0-4035-ba38-289ca9fa7896",
+                                "questions": [
+                                    {
+                                        "answers": [
+                                            {
+                                                "display": {
+                                                    "properties": {
+                                                        "columns": true
+                                                    }
+                                                },
+                                                "guidance": "",
+                                                "id": "8fe76762-d07f-4a1f-a315-0b0385940f8c",
+                                                "label": "How many starting crawlers do you know?",
+                                                "mandatory": true,
+                                                "options": [],
+                                                "q_code": "30",
+                                                "type": "PositiveInteger",
+                                                "validation": {
+                                                    "messages": {}
+                                                }
+                                            }
+                                        ],
+                                        "description": "",
+                                        "display": {
+                                            "properties": {}
+                                        },
+                                        "id": "4818d4fa-f4c4-4d6d-8d70-d7319e91e354",
+                                        "title": "",
+                                        "type": "General",
+                                        "validation": []
+                                    }
+                                ],
+                                "title": "",
+                                "validation": []
+                            }
+                        ],
+                        "routing_rules":[
+                                    {
+                                        "goto": {
+                                            "id" : "73ca315e-cab0-4b19-a79b-f850884db9e5_1",
+                                            "when": {
+                                                "id" : "8fe76762-d07f-4a1f-a315-0b0385940f8c",
+                                                "condition": "not equals",
+                                                "value":"0"
+                                            }
+                                        },
+                                        "goto": {
+                                            "id" : "cd3b74d1-b687-4051-9634-a8f9ce10a27d",
+                                            "when": {
+                                                "id" : "8fe76762-d07f-4a1f-a315-0b0385940f8c",
+                                                "condition": "equals",
+                                                "value":"0"
+                                            }
+                                        }
+                                    }
+                                ],
+                        "title": "",
+                        "validation": []
+                    },
+                    {
+                        "display": {
+                            "properties": {}
+                        },
+                        "id": "73ca315e-cab0-4b19-a79b-f850884db9e5_1",
+                        "sections": [
+                            {
+                                "description": "",
+                                "display": {
+                                    "properties": {}
+                                },
+                                "id": "e41cada8-9b84-469b-9414-0935797ecf7d_1",
+                                "questions": [
+                                    {
+                                        "answers": [
+                                            {
+                                                "display": {
+                                                    "properties": {
+                                                        "columns": true
+                                                    }
+                                                },
+                                                "guidance": "",
+                                                "id": "56b6f367-e84b-43fa-a5e2-19193f223fa0_1",
+                                                "label": "Please provide a general description of each crawler you know",
+                                                "mandatory": true,
+                                                "options": [],
+                                                "q_code": "31",
+                                                "type": "Textarea",
+                                                "validation": {
+                                                    "messages": {}
+                                                }
+                                            }
+                                        ],
+                                        "description": "",
+                                        "display": {
+                                            "properties": {}
+                                        },
+                                        "id": "691bba28-d701-4570-b2f1-9070a1515d6a_1",
+                                        "title": "",
+                                        "type": "General",
+                                        "validation": []
+                                    }
+                                ],
+                                "title": "",
+                                "validation": []
+                            }
+                        ],
+                        "routing_rules":[
+                            {
+                                "repeat": {
+                                    "answer_id" : "8fe76762-d07f-4a1f-a315-0b0385940f8c"
+                                }
+                            }
+                        ],
+                        "title": "",
+                        "validation": []
+                    },
+                    {
+                        "display": {
+                            "properties": {}
+                        },
+                        "id": "cd3b74d1-b687-4051-9634-a8f9ce10a27d",
+                        "sections": [
+                            {
+                                "description": "May the force be with you young EQ developer<br/><br/>",
+                                "display": {
+                                    "properties": {}
+                                },
+                                "id": "017880bc-752d-4a6b-83df-e130409ee660",
+                                "questions": [
+                                  {
+                                        "answers": [
+                                            {
+                                                "display": {},
+                                                "guidance": "",
+                                                "id": "cccfe681-9969-4175-8ac3-98184ab58423",
+                                                "label": "Which species stole the plans to the second Death Star?",
+                                                "mandatory": false,
+                                                "options": [],
+                                                "q_code": "0",
+                                                "type": "TextField"
+                                            }
+                                        ],
+                                        "description": "",
+                                        "display": {
+                                            "properties": {}
+                                        },
+                                        "id": "1054a0de-4878-4d24-b997-7965ad8e3e66",
+                                        "title": "",
+                                        "type": "General"
+                                  },
+                                  {
+                                        "answers": [
+                                            {
+                                                "alias": "chewies_age",
+                                                "display": {},
+                                                "guidance": "",
+                                                "id": "6cf5c72a-c1bf-4d0c-af6c-d0f07bc5b65b",
+                                                "label": "How old is Chewy?",
+                                                "mandatory": true,
+                                                "options": [],
+                                                "q_code": "1",
+                                                "type": "Integer",
+                                                "validation": {
+                                                    "messages": {
+                                                        "INTEGER_TOO_LARGE": "No one lives that long, not even Yoda",
+                                                        "NEGATIVE_INTEGER": "Negative age you can not be.",
+                                                        "NOT_INTEGER": "Please enter your age."
+                                                    }
+                                                }
+                                            }
+                                        ],
+                                        "description": "",
+                                        "display": {
+                                            "properties": {}
+                                        },
+                                        "id": "88824eff-7bb6-443f-85cb-8c2db016d44c",
+                                        "title": "",
+                                        "type": "General"
+                                    },
+                                    {
+                                        "answers": [
+                                            {
+                                                "display": {},
+                                                "guidance": "",
+                                                "id": "92e49d93-cbdc-4bcb-adb2-0e0af6c9a07c",
+                                                "label": "How many Octillions do Nasa reckon it would cost to build a death star?",
+                                                "mandatory": true,
+                                                "options": [],
+                                                "q_code": "2",
+                                                "type": "Currency",
+                                                "validation": {
+                                                    "messages": {
+                                                        "INTEGER_TOO_LARGE": "How much, idiot you must be",
+                                                        "NEGATIVE_INTEGER": "How can it be negative?",
+                                                        "NOT_INTEGER": "Please only enter whole numbers into the field."
+                                                    }
+                                                }
+                                            }
+                                        ],
+                                        "description": "",
+                                        "display": {
+                                            "properties": {}
+                                        },
+                                        "id": "b8a803ba-2048-46dc-83cf-9ef9000d7a92",
+                                        "title": "",
+                                        "type": "General"
+                                    },
+                                    {
+                                        "answers": [
+                                            {
+                                                "display": {},
+                                                "guidance": "",
+                                                "id": "pre49d93-cbdc-4bcb-adb2-0e0af6c9a07c",
+                                                "label": "How hot is a lightsaber in degrees C?",
+                                                "mandatory": false,
+                                                "options": [],
+                                                "q_code": "3",
+                                                "type": "PositiveInteger",
+                                                "validation": {
+                                                    "messages": {
+                                                        "INTEGER_TOO_LARGE": "Thats hotter then the sun, Jar Jar Binks you must be",
+                                                        "NEGATIVE_INTEGER": "How can it be negative?",
+                                                        "NOT_INTEGER": "Please only enter whole numbers into the field."
+                                                    }
+                                                }
+                                            }
+                                        ],
+                                        "description": "",
+                                        "display": {
+                                            "properties": {}
+                                        },
+                                        "id": "d8a803ga-2048-46dc-83cf-9ef9000d7a92",
+                                        "title": "",
+                                        "type": "General"
+                                    },
+                                    {
+                                        "answers": [
+                                            {
+                                                "display": {
+                                                    "properties": {
+                                                        "columns": true
+                                                    }
+                                                },
+                                                "guidance": "",
+                                                "id": "a5dc09e8-36f2-4bf4-97be-c9e6ca8cbe0d",
+                                                "label": "",
+                                                "mandatory": true,
+                                                "options": [
+                                                    {
+                                                        "label": "Lion",
+                                                        "value": "Lion"
+                                                    },
+                                                    {
+                                                        "label": "Elephant",
+                                                        "value": "Elephant"
+                                                    },
+                                                    {
+                                                        "label": "Cow",
+                                                        "value": "Cow"
+                                                    },
+                                                    {
+                                                        "label": "Hippo",
+                                                        "value": "Hippo"
+                                                    }
+                                                ],
+                                                "q_code": "4",
+                                                "type": "Radio"
+                                            }
+                                        ],
+                                        "description": "",
+                                        "display": {
+                                            "properties": {}
+                                        },
+                                        "id": "235f0930-47fb-4998-afed-d73167886d63",
+                                        "title": "What animal was used to create the engine sound of the Empire's TIE fighters?",
+                                        "type": "General"
+                                    },
+                                    {
+                                        "answers": [
+                                            {
+                                                "display": {
+                                                    "properties": {
+                                                        "columns": false
+                                                    }
+                                                },
+                                                "guidance": "",
+                                                "id": "7587eb9b-f24e-4dc0-ac94-66118b896c10",
+                                                "label": "",
+                                                "mandatory": false,
+                                                "options": [
+                                                    {
+                                                        "label": "I've been waiting for you, Obi-Wan",
+                                                        "value": "I've been waiting for you, Obi-Wan"
+                                                    },
+                                                    {
+                                                        "label": "Luke, I am your father",
+                                                        "value": "Luke, I am your father"
+                                                    },
+                                                    {
+                                                        "label": "Together we can rule the galaxy",
+                                                        "value": "Together we can rule the galaxy"
+                                                    },
+                                                    {
+                                                        "label": "I find your lack of faith disturbing",
+                                                        "value": "I find your lack of faith disturbing"
+                                                    }
+                                                ],
+                                                "q_code": "5",
+                                                "type": "Radio"
+                                            }
+                                        ],
+                                        "description": "",
+                                        "display": {
+                                            "properties": {}
+                                        },
+                                        "id": "def61645-c231-4522-ba2f-273b25507e53",
+                                        "title": "Which of these Darth Vader quotes is wrong?",
+                                        "type": "General"
+                                    },
+                                    {
+                                        "answers": [
+                                            {
+                                                "display": {
+                                                    "properties": {
+                                                        "columns": true
+                                                    }
+                                                },
+                                                "guidance": "",
+                                                "id": "9587eb9b-f24e-4dc0-ac94-66117b896c10",
+                                                "label": "",
+                                                "mandatory": true,
+                                                "options": [
+                                                    {
+                                                        "label": "Luke Skywalker",
+                                                        "value": "Luke Skywalker"
+                                                    },
+                                                    {
+                                                        "label": "Yoda",
+                                                        "value": "Yoda"
+                                                    },
+                                                    {
+                                                        "label": "Anakin Skywalker",
+                                                        "value": "Anakin Skywalker"
+                                                    },
+                                                    {
+                                                        "label": "Rey",
+                                                        "value": "Rey"
+                                                    },
+                                                    {
+                                                        "label": "Obi-Wan Kenobi",
+                                                        "value": "Obi-Wan Kenobi"
+                                                    },
+                                                    {
+                                                        "label": "Qui-Gon Jinn",
+                                                        "value": "Qui-Gon Jinn"
+                                                    }
+                                                ],
+                                                "q_code": "6",
+                                                "type": "Checkbox"
+                                            }
+                                        ],
+                                        "description": "",
+                                        "display": {
+                                            "properties": {}
+                                        },
+                                        "id": "def6r645-c231-4522-ba2f-273b25507e53",
+                                        "title": "Which 3 have wielded a green lightsaber?",
+                                        "type": "General"
+                                    },
+                                    {
+                                        "answers": [
+                                            {
+                                                "display": {
+                                                    "properties": {
+                                                        "columns": false
+                                                    }
+                                                },
+                                                "guidance": "",
+                                                "id": "5587eb9b-f24e-4dc0-ac94-66117b896c10",
+                                                "label": "",
+                                                "mandatory": false,
+                                                "options": [
+                                                    {
+                                                        "label": "Luke Skywalker",
+                                                        "value": "Luke Skywalker"
+                                                    },
+                                                    {
+                                                        "label": "Han Solo",
+                                                        "value": "Han Solo"
+                                                    },
+                                                    {
+                                                        "label": "The Emperor",
+                                                        "value": "The Emperor"
+                                                    },
+                                                    {
+                                                        "label": "R2D2",
+                                                        "value": "R2D2"
+                                                    },
+                                                    {
+                                                        "label": "Senator Amidala",
+                                                        "value": "Senator Amidala"
+                                                    },
+                                                    {
+                                                        "label": "Yoda",
+                                                        "value": "Yoda"
+                                                    }
+                                                ],
+                                                "q_code": "7",
+                                                "type": "Checkbox"
+                                            }
+                                        ],
+                                        "description": "",
+                                        "display": {
+                                            "properties": {}
+                                        },
+                                        "id": "pef6r645-c231-4522-ba2f-273b25507e53",
+                                        "title": "Which 3 appear in any of the opening crawlers?",
+                                        "type": "General"
+                                    },
+                                    {
+                                        "answers": [
+                                            {
+                                                "display": {},
+                                                "guidance": "",
+                                                "id": "6fd644b0-798e-4a58-a393-a438b32fe637",
+                                                "label": "From",
+                                                "mandatory": true,
+                                                "options": [],
+                                                "q_code": "81",
+                                                "type": "Date",
+                                                "validation": {
+                                                    "messages": {
+                                                        "INVALID_DATE": "The date entered is not valid.  Please correct your answer.",
+                                                        "MANDATORY": "Please answer before continuing."
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "display": {},
+                                                "guidance": "",
+                                                "id": "06a6a4b7-6ce4-4687-879d-3443cd8e2ff0",
+                                                "label": "To",
+                                                "mandatory": true,
+                                                "options": [],
+                                                "q_code": "82",
+                                                "type": "Date",
+                                                "validation": {
+                                                    "messages": {
+                                                        "INVALID_DATE": "The date entered is not valid.  Please correct your answer.",
+                                                        "MANDATORY": "Please answer before continuing."
+                                                    }
+                                                }
+                                            }
+                                        ],
+                                        "description": "It could be between {exercise.start_date:%-d %B %Y} and {exercise.end_date:%-d %B %Y}. But that might just be a test",
+                                        "display": {
+                                            "properties": {}
+                                        },
+                                        "id": "6cc86b54-330c-4465-99b2-34cc7073dc2c",
+                                        "title": "When was The Empire Strikes Back released?",
+                                        "type": "DateRange"
+                                    }
+                                ],
+                                "title": "Star Wars Quiz"
+                            }
+                        ],
+                        "title": "Star Wars"
+                    },
+                    {
+                        "display": {
+                            "properties": {}
+                        },
+                        "id": "an3b74d1-b687-4051-9634-a8f9ce10ard",
+                        "sections": [
+                            {
+                                "description": "If you didn't pick the right employment date for Return of the Jedi its your fault if this question makes no sense",
+                                "display": {
+                                    "properties": {}
+                                },
+                                "id": "12346782-08a6-4213-9dc9-0780c2996896",
+                                "questions": [
+
+                                    {
+                                        "answers": [
+                                            {
+                                                "display": {},
+                                                "guidance": "",
+                                                "id": "5rr015b1-f87c-4740-9fd4-f01f707ef558",
+                                                "label": "What was the total number of Ewokes?",
+                                                "mandatory": false,
+                                                "options": [],
+                                                "q_code": "9",
+                                                "type": "Integer",
+                                                "validation": {
+                                                    "messages": {
+                                                        "INTEGER_TOO_LARGE": "Thats hotter then the sun, Jar Jar Binks you must be",
+                                                        "NEGATIVE_INTEGER": "How can it be negative?",
+                                                        "NOT_INTEGER": "Please only enter whole numbers into the field."
+                                                    }
+                                                }
+                                            }
+                                        ],
+                                        "description": "",
+                                        "display": {
+                                            "properties": {}
+                                        },
+                                        "id": "rt4eedc2-d98c-4d4d-9a7c-997ce10c361f",
+                                        "title": "",
+                                        "type": "General"
+                                    }
+                                ],
+                                "title": "On {exercise.employment_date:%-d %B %Y} how many were employed?"
+                            },
+                            {
+                                "description": "",
+                                "display": {
+                                    "properties": {}
+                                },
+                                "id": "94546782-08a6-4213-9dc9-0780c2996896",
+                                "questions": [
+                                    {
+                                        "answers": [
+                                            {
+                                                "display": {},
+                                                "guidance": "",
+                                                "id": "c8d9d66e-6c0a-439e-8ef9-e0d7038be009",
+                                                "label": "What else did the Bothan spies steal for the Rebel Alliance?",
+                                                "mandatory": false,
+                                                "options": [],
+                                                "q_code": "0",
+                                                "type": "TextField"
+                                            }
+                                        ],
+                                        "description": "",
+                                        "display": {
+                                            "properties": {}
+                                        },
+                                        "id": "048e40da-bca4-48e5-9885-0bb6413bef62",
+                                        "title": "The force is strong with you, young Jedi!",
+                                        "type": "General",
+                                        "skip_condition": {
+                                            "when": {
+                                                "id" : "cccfe681-9969-4175-8ac3-98184ab58423",
+                                                "condition": "not equals",
+                                                "value":"Bothans"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "answers": [
+                                            {
+                                                "display": {
+                                                    "properties": {
+                                                        "max_length": "2000"
+                                                    }
+                                                },
+                                                "guidance": "",
+                                                "id": "215015b1-f87c-4740-9fd4-f01f707ef558",
+                                                "label": "Why doesn't Chewbacca receive a medal at the end of A New Hope?",
+                                                "mandatory": true,
+                                                "options": [],
+                                                "q_code": "10",
+                                                "type": "Textarea"
+                                            }
+                                        ],
+                                        "description": "",
+                                        "display": {
+                                            "properties": {}
+                                        },
+                                        "id": "fef6edc2-d98c-4d4d-9a7c-997ce10c361f",
+                                        "title": "",
+                                        "type": "General"
+                                    },
+                                    {
+                                        "answers": [
+                                            {
+                                                "display": {
+                                                    "properties": {
+                                                        "columns": false
+                                                    }
+                                                },
+                                                "guidance": "",
+                                                "id": "7587qe9b-f24e-4dc0-ac94-66118b896c10",
+                                                "label": "",
+                                                "mandatory": true,
+                                                "options": [
+                                                    {
+                                                        "label": "Yes, Really!",
+                                                        "value": "Yes"
+                                                    },
+                                                    {
+                                                        "label": "No",
+                                                        "value": "No"
+                                                    }
+                                                ],
+                                                "q_code": "43",
+                                                "type": "Radio"
+                                            }
+                                        ],
+                                        "description": "",
+                                        "display": {
+                                            "properties": {}
+                                        },
+                                        "id": "fef6qwc2-d98c-4d4d-9a7c-997ce10c361f",
+                                        "title": "Do you really think that Chewbacca is {answers.chewies_age} years old?",
+                                        "type": "General"
+                                    },
+                                    {
+                                        "answers": [
+                                            {
+                                                "display": {},
+                                                "guidance": "",
+                                                "id": "77e20f0e-cabb-4eac-8cb0-ac6e66f0e95f",
+                                                "label": "",
+                                                "mandatory": false,
+                                                "options": [
+                                                    {
+                                                        "label": "Awesome, I love them all",
+                                                        "value": "Awesome, I love them all"
+                                                    },
+                                                    {
+                                                        "label": "I like to pretend they didn't happen",
+                                                        "value": "I like to pretend they didn't happen"
+                                                    }
+                                                ],
+                                                "q_code": "44",
+                                                "type": "Radio"
+                                            }
+                                        ],
+                                        "description": "Episodes I-III",
+                                        "display": {
+                                            "properties": {}
+                                        },
+                                        "id": "a3967576-e1a0-4930-9bb4-475157ca5f7c",
+                                        "title": "What do you think of the prequel series?",
+                                        "type": "General"
+                                    }
+                                ],
+                                "title": ""
+                            }
+                        ],
+                        "title": ""
+                    },
+                    {
+                        "display": {
+                            "properties": {}
+                        },
+                        "id": "846f8514-fed2-4bd7-8fb2-4b5fcb1622b1",
+                        "sections": [
+                            {
+                                "description": "",
+                                "display": {
+                                    "properties": {}
+                                },
+                                "id": "d45aa634-fed7-42ab-a1d8-dca512b9d834",
+                                "questions": [
+                                    {
+                                        "answers": [
+                                            {
+                                                "display": {},
+                                                "guidance": "",
+                                                "id": "fcf636ff-7b3d-47b6-aaff-9a4b00aa888b",
+                                                "label": "What is the name of Jar Jar Binks' home planet?",
+                                                "mandatory": true,
+                                                "options": [],
+                                                "q_code": "45",
+                                                "type": "TextField"
+                                            }
+                                        ],
+                                        "description": "",
+                                        "display": {
+                                            "properties": {}
+                                        },
+                                        "id": "f2ee7dd4-b63c-45f1-a883-9f89c937ad17",
+                                        "title": "In that case you'll love this question!",
+                                        "type": "General",
+                                        "skip_condition": {
+                                            "when": {
+                                                "id" : "77e20f0e-cabb-4eac-8cb0-ac6e66f0e95f",
+                                                "condition": "equals",
+                                                "value": "I like to pretend they didn't happen"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "answers": [
+                                            {
+                                                "display": {},
+                                                "guidance": "",
+                                                "id": "4a085fe5-6830-4ef6-96e6-2ea2b3caf0c1",
+                                                "label": "",
+                                                "mandatory": false,
+                                                "options": [
+                                                    {
+                                                        "label": "Episode I -The Phantom Menance",
+                                                        "value": "1"
+                                                    },
+                                                    {
+                                                        "label": "Episode II - Attack of the Clones",
+                                                        "value": "2"
+                                                    },
+                                                    {
+                                                        "label": "Episode III - Revenge of the Sith",
+                                                        "value": "3"
+                                                    },
+                                                    {
+                                                        "label": "Episode IV - A New Hope",
+                                                        "value": "4"
+                                                    },
+                                                    {
+                                                        "label": "Episode V - The Empire Strikes Back",
+                                                        "value": "5"
+                                                    },
+                                                    {
+                                                        "label": "Episode VI - Return of the Jedi",
+                                                        "value": "6"
+                                                    },
+                                                    {
+                                                        "label": "Episode VII - The Force Awakens",
+                                                        "value": "7"
+                                                    }
+                                                ],
+                                                "q_code": "46",
+                                                "type": "Radio"
+                                            }
+                                        ],
+                                        "description": "Finally, which  is your favourite film?",
+                                        "display": {
+                                            "properties": {}
+                                        },
+                                        "id": "9e104317-6a19-48a5-b70f-7aec92deb90e",
+                                        "title": "Thanks for participating in the survey",
+                                        "type": "General",
+                                        "skip_condition": {
+                                            "when": {
+                                                "id" : "77e20f0e-cabb-4eac-8cb0-ac6e66f0e95f",
+                                                "condition": "equals",
+                                                "value":"yes"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "title": ""
+                            }
+                        ],
+                        "title": ""
+                    }
+                ],
+                "display": {
+                    "properties": {}
+                },
+                "id": "14ba4707-321d-441d-8d21-b8367366e766",
+                "title": ""
+            }
+        ]
+    }
+
+
+Dahl API
+--------
