@@ -22,6 +22,8 @@ lower-level elements.  At the top level exists the Questionnaire.
    dahl/questionnaire
    dahl/group
    dahl/block
+   dahl/section
+   
 
 
 .. code-block:: javascript
